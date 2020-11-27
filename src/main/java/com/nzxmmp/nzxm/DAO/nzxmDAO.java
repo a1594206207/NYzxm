@@ -4,17 +4,19 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.nzxmmp.nzxm.Mapper.OldnzxmbdMapper;
 import com.nzxmmp.nzxm.Mapper.SearchMapping;
 import com.nzxmmp.nzxm.Service.NzxmService;
-import com.nzxmmp.nzxm.entity.Nzxmbd;
-import com.nzxmmp.nzxm.entity.Oldnzxmbd;
-import com.nzxmmp.nzxm.entity.SearchNzxmbd;
+import com.nzxmmp.nzxm.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public interface nzxmDAO {
 
     /**
-     * 查询所有并分页
+     * 查询所有
      */
-    public IPage<Nzxmbd> SelectAll(Integer page);
+    public List<Nzxmbd> SelectAll(Integer page);
+
+    public IPage<FindAll> fandAll(Integer page);
 
     /**
      *查询单个
@@ -47,4 +49,13 @@ public interface nzxmDAO {
      * 搜索
      */
     public  IPage<SearchNzxmbd> search(SearchNzxmbd searchNzxmbd,Integer page);
+
+
+    /**
+     * 基于表单查询导出功能
+     * @param outSelectReq
+     * @param outTemplate
+     * @return
+     */
+    public List<Nzxmbd> outSelectAll(OutSelectReq outSelectReq);
 }

@@ -7,11 +7,11 @@ import com.nzxmmp.nzxm.DAO.nzxmDAO;
 import com.nzxmmp.nzxm.Mapper.NzxmbdMapping;
 import com.nzxmmp.nzxm.Mapper.OldnzxmbdMapper;
 import com.nzxmmp.nzxm.Mapper.SearchMapping;
-import com.nzxmmp.nzxm.entity.Nzxmbd;
-import com.nzxmmp.nzxm.entity.Oldnzxmbd;
-import com.nzxmmp.nzxm.entity.SearchNzxmbd;
+import com.nzxmmp.nzxm.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository("nzxmDAOImpl")
 public class nzxmDAOImpl implements nzxmDAO {
@@ -29,15 +29,20 @@ public class nzxmDAOImpl implements nzxmDAO {
      * @return
      */
     @Override
-    public IPage<Nzxmbd> SelectAll(Integer page) {
+    public List<Nzxmbd> SelectAll(Integer page) {
         QueryWrapper<Nzxmbd> queryWrapper=new QueryWrapper<Nzxmbd>();
 
         Page<Nzxmbd> objectPage = new Page<>(page, 4);
 
 
-        IPage<Nzxmbd> nzxmbdIPage = nzxmbdMapping.selectPage(objectPage,null);
+        List<Nzxmbd> nzxmbds = nzxmbdMapping.selectList(null);
 
-        return nzxmbdIPage;
+        return nzxmbds;
+    }
+
+    @Override
+    public IPage<FindAll> fandAll(Integer page) {
+        return null;
     }
 
     /**
@@ -129,6 +134,10 @@ public class nzxmDAOImpl implements nzxmDAO {
         return searchNzxmbdPage1;
     }
 
+    @Override
+    public List<Nzxmbd> outSelectAll(OutSelectReq outSelectReq) {
+        return null;
+    }
 
 
 }

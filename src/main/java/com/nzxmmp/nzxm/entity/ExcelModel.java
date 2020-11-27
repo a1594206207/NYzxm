@@ -2,7 +2,9 @@ package com.nzxmmp.nzxm.entity;
 
 import lombok.Data;
 
-
+/**
+ *
+ */
 @Data
 public class ExcelModel {
 

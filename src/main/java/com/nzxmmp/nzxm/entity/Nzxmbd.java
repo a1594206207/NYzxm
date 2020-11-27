@@ -1,5 +1,6 @@
 package com.nzxmmp.nzxm.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+/**
+ * 内资项目总实体类
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,6 +26,7 @@ public class Nzxmbd {
   private String xgsmc;
   private String tyxydm;
   private String qylx;
+  @JSONField(format = "yyyy/MM/dd")
   private java.util.Date ldsj;
   private String xmjj;
   private String hydl;
@@ -56,9 +61,12 @@ public class Nzxmbd {
   private String unitName;
   private String xmlydSheng;
   private String xmlydShi;
+  @JSONField(format = "yyyy/MM/dd")
   private java.util.Date nldsj;
   private String zsjd;
+  @JSONField(format = "yyyy/MM/dd")
   private java.util.Date creattime;
+  @JSONField(format = "yyyy/MM/dd")
   private java.util.Date updatetime;
   private String state;
   private String deletestate;
@@ -72,6 +80,9 @@ public class Nzxmbd {
   private String bak8;
   private String bak9;
   private String bak10;
+  private String xgr;
+  private String xgyy;
+  private String scr;
 
 
 

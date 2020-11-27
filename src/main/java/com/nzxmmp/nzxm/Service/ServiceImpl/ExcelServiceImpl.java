@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -30,13 +31,13 @@ import java.util.List;
 public class ExcelServiceImpl implements ExcelServic {
 
     @Autowired
-    @Qualifier("nzxmDAOImpl")
+    @Qualifier("nzxmDAOImpl2")
     private nzxmDAO nzxmDAO;
 
     @Autowired
     private NzxmbdMapping nzxmbdMapping;
     @Autowired
-    @Qualifier("NzxmServiceImpl")
+    @Qualifier("NzxmServiceImpl2")
     private NzxmService nzxmService;
     //导出模板
     public Workbook outTemplate(){
@@ -114,16 +115,20 @@ public class ExcelServiceImpl implements ExcelServic {
         String reason=null;//异常原因
         try {
 
-
-
             List<ExcelModel> list = new ArrayList<>();
 
             try {
 //
 
+                //
+               EasyExcel.read(file.getInputStream(),new EventListener()).sheet().doRead();
+                //
+
                 list=EasyExcel.read(file.getInputStream(),ExcelModel.class,new EventListener()).sheet().doReadSync();
-
-
+                //测试
+                System.out.println("===========================");
+                list.forEach(System.out::println);
+                System.out.println("===========================");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -146,7 +151,13 @@ public class ExcelServiceImpl implements ExcelServic {
                         e.printStackTrace();
                     }
                     if (!list2.isEmpty()) {
-                        reason="存在" + list2.toString() + "未赋值";
+                        if(excelModel.getXmmc()==null){
+                            int row=i+2;   //判断未填写的是第几行
+                            reason="存在第"+row+"行的项目名称未填写";
+                            throw new RuntimeException();
+                        }
+
+                        reason=excelModel.getXmmc() + "项目存在未赋值的单元格";
                         throw new RuntimeException();
                     }
                 }
@@ -170,27 +181,36 @@ public class ExcelServiceImpl implements ExcelServic {
                 nzxmbd.setHyxl(excelModel.getHyxl());
 
 
-//                String insert = nzxmService.insert(nzxmbd);
+
+
 
                 //添加方法
-                    Nzxmbd one = nzxmDAO.selectToName(nzxmbd.getXmmc());
-                    if(one!=null){
-                        reason="“"+nzxmbd.getXmmc()+"”项目以存在";
-                        throw new Exception();
-                    }
-                    Integer result = nzxmDAO.insert(nzxmbd);
-                    if (!(result>0)){
+                Nzxmbd one = nzxmDAO.selectToName(nzxmbd.getXmmc());
+                if(one!=null){
 
-                        throw new Exception();
-                    }
+                    reason="“ "+nzxmbd.getXmmc()+" ”项目名已存在";
+                    throw new Exception();
 
                 }
-              //
+                //初始化创建时间和删除状态
+                nzxmbd.setCreattime(new Date());
+                nzxmbd.setDeletestate("0");
+
+                Integer result = nzxmDAO.insert(nzxmbd);
+
+                if (!(result>0)){
+                    throw new RuntimeException();
+                }
+
+
+
+                }
+
 
         }catch (Exception e){
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 //            e.printStackTrace();
-            return "添加失败"+reason;
+            return "添加失败："+reason;
         }
 
         return "添加成功";

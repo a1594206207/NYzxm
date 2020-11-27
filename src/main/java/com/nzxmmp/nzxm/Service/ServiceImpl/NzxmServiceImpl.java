@@ -3,6 +3,7 @@ package com.nzxmmp.nzxm.Service.ServiceImpl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.nzxmmp.nzxm.DAO.nzxmDAO;
 import com.nzxmmp.nzxm.Service.NzxmService;
+import com.nzxmmp.nzxm.entity.FindAll;
 import com.nzxmmp.nzxm.entity.Nzxmbd;
 import com.nzxmmp.nzxm.entity.Oldnzxmbd;
 import com.nzxmmp.nzxm.entity.SearchNzxmbd;
@@ -31,9 +32,15 @@ public class NzxmServiceImpl implements NzxmService {
     @Transactional(readOnly = true)
     public IPage<Nzxmbd> pageFind(Integer pageNum) {
 
-        IPage<Nzxmbd> nzxmbdIPage = nzxmDAO.SelectAll(pageNum);
+//        IPage<Nzxmbd> nzxmbdIPage = nzxmDAO.SelectAll(pageNum);
 
-        return nzxmbdIPage;
+//        return nzxmbdIPage;
+     return  null;
+    }
+
+    @Override
+    public IPage<FindAll> pageFind2(Integer pageNum) {
+        return null;
     }
 
     /**
@@ -87,7 +94,7 @@ public class NzxmServiceImpl implements NzxmService {
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean update(Nzxmbd nzxmbd) {
+    public String update(Nzxmbd nzxmbd) {
         try{
             Integer result = nzxmDAO.update(nzxmbd);
 
@@ -97,9 +104,9 @@ public class NzxmServiceImpl implements NzxmService {
 
         }catch (Exception e){
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-            return  false;
+            return  "false";
         }
-        return true;
+        return "true";
 
     }
 

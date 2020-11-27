@@ -15,14 +15,14 @@ import java.net.URLEncoder;
 
 
 @RestController
-@RequestMapping("/excel")
+@RequestMapping("/excelx")
 public class ExcelController {
 
     @Autowired
     @Qualifier("ExcelSericeImpl")
     private ExcelServic excelService;
     //模板的下载
-    @GetMapping("/downloadTemplate")
+    @GetMapping("/downloadTemplatex")
     public void downloadTemplate(HttpServletResponse response) throws Exception {
         //
 
@@ -38,7 +38,7 @@ public class ExcelController {
 
 //
 
-    @GetMapping("/downloadAll")
+    @GetMapping("/downloadAllx")
     public void downloadAll(HttpServletResponse response) throws Exception{
 
 

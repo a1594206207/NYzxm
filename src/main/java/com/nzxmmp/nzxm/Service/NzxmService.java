@@ -1,6 +1,7 @@
 package com.nzxmmp.nzxm.Service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.nzxmmp.nzxm.entity.FindAll;
 import com.nzxmmp.nzxm.entity.Nzxmbd;
 import com.nzxmmp.nzxm.entity.SearchNzxmbd;
 import org.springframework.stereotype.Repository;
@@ -9,12 +10,13 @@ import org.springframework.stereotype.Repository;
 public interface NzxmService {
 
     public IPage<Nzxmbd> pageFind(Integer pageNum);
+    public IPage<FindAll> pageFind2(Integer pageNum);
 
     public Nzxmbd findOne(Integer id);
 
     public  String insert(Nzxmbd nzxmbd);
 
-    public boolean update(Nzxmbd nzxmbd);
+    public String update(Nzxmbd nzxmbd);
 
     /**
      * 将nzxmbd的移动到回收站

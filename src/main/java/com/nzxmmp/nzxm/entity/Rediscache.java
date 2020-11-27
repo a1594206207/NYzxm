@@ -10,6 +10,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 @Slf4j
@@ -40,7 +41,7 @@ public class Rediscache implements Cache {
             this.redisTemplate= (RedisTemplate<String,Object>)SpringUtil.getBean("redisTemplate");
         }
         int i = random.nextInt(MAX_TIME-MIN_TIME)+MIN_TIME;
-        redisTemplate.opsForValue().set(key.toString(),value,i);
+        redisTemplate.opsForValue().set(key.toString(),value,i, TimeUnit.MINUTES);
     }
 
     @Override
