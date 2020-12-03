@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+      <div>
+          <form action="/Nzxmuser/search/1" method="get">
+              账号：<input name="zh" type="text">
+              注册资本：<input name="zczb" type="text" /><br />
+              投资总额:<input name="tzze" type="text" /><br />
+              上报部门：<select name="unitName" size="1">
+                            <option value="">请选择</option>
+                            <option value="产业投促局">产业投促局</option>
+                            <option value="科技创新局">科技创新局</option>
+                            <option value="金融招商局">金融招商局</option>
+                            <option value="中小企业招商局">中小企业招商局</option>
+                            <option value="京津冀招商局">京津冀招商局</option>
+                            <option value="海洋招商局">海洋招商局</option>
+                            <option value="信息产业招商局">信息产业招商局</option>
+                            <option value="生物医药招商局">生物医药招商局</option>
+                            <option value="经发局">经发局</option>
+                            <option value="重大项目服务办">重大项目服务办</option>
+                            <option value="科技发展局">科技发展局</option>
+                       </select><br />
+              项目名称：<input name="xmmc" type="text" /><br />
+              起始年月：<input name="Creattime" type="date" /><br />
+              终止年月:<input name="Endtime" type="date" /><br />
+              投资方全称:<input name="tzfmc" type="text" /><br />
+              企业类型：<select name="qylx" size="1">
+                            <option value="">请选择</option>
+                            <option value="国有">国有</option>
+                            <option value="民营">民营</option>
+                      </select><br />
+              项目状态：<select name="state" size="1">
+                            <option value="">请选择</option>
+                            <option value="洽谈跟踪">洽谈跟踪</option>
+                            <option value="半年有望">半年有望</option>
+                            <option value="签约落地">签约落地</option>
+                      </select><br />
+              项目类别：<select name="xmlb" size="1">
+                            <option value="">请选择</option>
+                            <option value="投资类">投资类</option>
+                            <option value="注册类">注册类</option>
+                      </select><br/>
+              所属区域:<input name="xmlySheng"><br />
+              <input type="submit" value="搜索"><br />
+          </form>
+
+      </div>
+
+
+</body>
+</html>

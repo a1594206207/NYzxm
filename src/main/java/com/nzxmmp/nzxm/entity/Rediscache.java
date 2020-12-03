@@ -13,6 +13,10 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+/**
+ * 实现mybatis的cache接口实现缓存
+ */
 @Slf4j
 public class Rediscache implements Cache {
     private String Id;
@@ -34,6 +38,11 @@ public class Rediscache implements Cache {
         return this.Id;
     }
 
+    /**
+     * 加入radis
+     * @param key
+     * @param value
+     */
     @Override
     public void putObject(Object key, Object value) {
 
@@ -44,6 +53,11 @@ public class Rediscache implements Cache {
         redisTemplate.opsForValue().set(key.toString(),value,i, TimeUnit.MINUTES);
     }
 
+    /**
+     * 获取 缓存
+     * @param o
+     * @return
+     */
     @Override
     public Object getObject(Object o) {
         if (redisTemplate==null){
@@ -75,9 +89,12 @@ public class Rediscache implements Cache {
         if (redisTemplate == null) {
             redisTemplate = (RedisTemplate<String, Object>) SpringUtil.getBean("redisTemplate");
         }
-        Set<String> keys = redisTemplate.keys("*:" +  this.Id + "*");
+        Set<String> keys = redisTemplate.keys("*" );
+
+
         if (!CollectionUtils.isEmpty(keys)) {
             redisTemplate.delete(keys);
+
         }
 
     }

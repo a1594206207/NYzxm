@@ -1,4 +1,4 @@
-package com.nzxmmp.nzxm.entity;
+package com.nzxmmp.nzxm.entity.before;
 
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;

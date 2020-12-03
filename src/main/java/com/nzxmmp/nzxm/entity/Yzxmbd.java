@@ -1,74 +1,60 @@
 package com.nzxmmp.nzxm.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
-
 /**
- * 内资项目总实体类
+ * 外资项目表单实体类
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Nzxmbd {
+public class Yzxmbd {
 
-  @TableId
   private String id;
   private String xmmc;
-  private String tzfmc;
-  private String tzfszqy;
+  private String wftzf;
+  private String zftzf;
+  private String tzgb;
+  private String qtgb;
   private String tzfjj;
   private String xgsmc;
-  private String tyxydm;
-  private String qylx;
+  private String tyshxydm;
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @JSONField(format = "yyyy/MM/dd")
   private java.util.Date ldsj;
   private String xmjj;
+  private String qylx;
   private String hydl;
   private String hyzl;
   private String hyxl;
-  private String xmlb;
+  private String ldlb;
   private String xmly;
   private String sfwbq;
   private String sfqyzb;
-  private String sfgnxzx;
-  private String gnzxlx;
+  private String sfwyfzx;
   private String sfsyrgzn;
   private String sfsyxyt;
   private String sfwyqyxm;
   private String qyxmsshd;
-  private String sfybxq;
+  private String sfysbxq;
   private String hjxy;
-  private String ydxq;
-  private String ckfxq;
-  private String bglxq;
+  private String yd;
+  private String ckf;
+  private String bgl;
   private String tzze;
   private String zczb;
-  private String dysjdwje;
-  private String nnsze;
+  private String zczbdw;
+  private String htwze;
+  private String nnszev;
   private String nyysr;
   private String njck;
   private String gdzctz;
   private String ddjy;
+  private String unitName;
   private String userName;
   private String userMobilePhone;
-  private String bz;
-  private String unitName;
-  private String xmlydSheng;
-  private String xmlydShi;
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @JSONField(format = "yyyy/MM/dd")
-  private java.util.Date nldsj;
-  private String zsjd;
-  @JSONField(format = "yyyy/MM/dd")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
   private java.util.Date creattime;
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   @JSONField(format = "yyyy/MM/dd")
@@ -85,11 +71,18 @@ public class Nzxmbd {
   private String bak8;
   private String bak9;
   private String bak10;
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  @JSONField(format = "yyyy/MM/dd")
+  private java.util.Date nldsj;
   private String xgr;
   private String xgyy;
   private String scr;
   private String scyy;
-  private Date deletetime;
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  @JSONField(format = "yyyy/MM/dd")
+  private java.util.Date deletetime;
+  private String bz;
+
 
 
 }

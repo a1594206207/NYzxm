@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+
+        <h4>导出</h4>
+        <form action="/exceluser/outNz" method="post">
+            账号：<input name="zh" type="text">
+            导出起始时间：<input name="Creattime" type="date" />
+            导出结束时间:<input name="Endtime" type="date" />
+            导出类型：<select name="outTempleta" size="1">
+            <option value="天津高新区内资在谈项目明细表">天津高新区内资在谈项目明细表</option>
+            <option value="天津高新区内资半年有望项目明细表">天津高新区内资半年有望项目明细表</option>
+            <option value="天津高新区内资签约落地项目明细表">天津高新区内资签约落地项目明细表</option>
+        </select>
+            导出部门：<select name="unitName" size="1">
+            <option value="">请选择</option>
+            <option value="产业投促局">产业投促局</option>
+            <option value="科技创新局">科技创新局</option>
+            <option value="金融招商局">金融招商局</option>
+            <option value="中小企业招商局">中小企业招商局</option>
+            <option value="京津冀招商局">京津冀招商局</option>
+            <option value="海洋招商局">海洋招商局</option>
+            <option value="信息产业招商局">信息产业招商局</option>
+            <option value="生物医药招商局">生物医药招商局</option>
+            <option value="经发局">经发局</option>
+            <option value="重大项目服务办">重大项目服务办</option>
+            <option value="科技发展局">科技发展局</option>
+        </select>
+            <input type="submit" value="导出">
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div>
+        <h4>模板下载</h4><br>
+        <form action="/exceluser/downTemplate" method="get">
+            模板选择：<select name="state" size="1">
+            <option value="天津高新区内资在谈项目明细表导入模板">天津高新区内资在谈项目明细表导入模板</option>
+            <option value="天津高新区内资半年有望项目明细表导入模板">天津高新区内资半年有望项目明细表导入模板</option>
+            <option value="天津高新区内资签约落地项目明细表导入模板">天津高新区内资签约落地项目明细表导入模板</option>
+        </select>
+            <input type="submit" value="下载">
+        </form>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <div>
+        <h4>导入</h4>
+        <form action="/exceluser/insertExcel" method="post" enctype="multipart/form-data">
+               <input name="file" type="file" >
+               <input type="submit" value="上传">
+        </form>
+    </div>
+
+
+
+</body>
+
+</body>
+</html>

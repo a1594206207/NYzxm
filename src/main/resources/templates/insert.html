@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h3>项目添加</h3>
+    <form action="/Nzxmuser/insert" method="post">
+        项目名称：<input name="xmmc", type="text">
+        所属行业:<select name="hydl" size="1">
+        <option value="">请选择</option>
+        <option value="工业类项目_01">工业类项目_01</option>
+        <option value="服务业项目_02">服务业项目_02</option>
+        <option value="农业类项目_03">农业类项目_03</option>
+    </select><br>
+        投资方名称：<input name="tzfmc" type="text">
+        企业类型：<select name="qylx" size="1"><br>
+        <option value="国有">国有</option>
+        <option value="民营">民营</option>
+    </select><br>
+        项目来源地：<select name="xmlydSheng" size="1">
+        <option></option>
+    </select>
+         项目类别：<select name="xmlb" size="1">
+    <option value="投资类">投资类</option>
+    <option value="注册类">注册类</option>
+    </select><br>
+         投资方简介：<textarea name="tzfjj" rows="5" cols="50"></textarea>
+         项目简介：<textarea name="xmjj" rows="5" cols="50"></textarea><br>
+         项目方联系人:<input name="bak1" type="text">
+         项目方联系方式：<input name="bak2" type="text"><br>
+         拟落地时间：<input name="nldsj" type="date">
+         是否五百强：<select name="sfwbq" size="1">
+    <option value="">请选择</option>
+    <option value="是">是</option>
+    <option value="否">否</option>
+</select><br>
+    是否企业总部：<select name="sfqyzb" size="1">
+    <option value="">请选择</option>
+    <option value="是">是</option>
+    <option value="否">否</option>
+</select>
+    是否属于新业态：<select name="sfsyxyt" size="1">
+    <option value="">请选择</option>
+    <option value="是">是</option>
+    <option value="否">否</option></select><br>
+    是否属于人工智能：<select name="sfqyrgzn" size="1">
+    <option value="">请选择</option>
+    <option value="是">是</option>
+    <option value="否">否</option>
+</select>
+    是否功能性中心：<select name="sfgnxzx" size="1">
+    <option value="">请选择</option>
+    <option value="是">是</option>
+    <option value="否">否</option>
+</select><br>
+    功能性中心类型：<input name="gnxzxlx" type="text">
+    招商进度：<input name="nldsj" type="text"><br>
+    项目来源：<select name="xmly" size="1">
+    <option value="">请选择</option>
+    <option value="以商招商">以商招商</option>
+    <option value="自主开发">自主开发</option>
+    <option value="领导交办">领导交办</option>
+</select>
+    环境效应：<select name="hjxy" size="1">
+    <option value="">请选择</option>
+    <option value="生态环境改善型_1">生态环境改善型_1</option>
+    <option value="对生态环境基本无影响_2">对生态环境基本无影响_2</option>
+    <option value="对生态环境有可控范围内的影响_3">对生态环境有可控范围内的影响_3</option>
+</select><br>
+    用地需求（平方米）：<input name="ydxq" type="text">
+    厂库房需求（平方米）：<input name="ckfxq" type="text"><br>
+    办公楼需求（平方米）：<input name="bglxq" type="text">
+    投资总额（万元）：<input name="tzze" type="text"><br>
+    注册资本（万元）：<input name="zczb" type="text">
+    年纳税总额（万元）：<input name="nnsze" type="text"><br>
+    年营业收入（万元）：<input name="nyysr" type="text">
+    带动就业（万元）：<input name="ddjy" type="text"><br>
+    是否为已签约项目：<select name="sfwyqyxm" size="1">
+    <option value="">请选择</option>
+    <option value="是">是</option>
+    <option value="否">否</option>
+</select>
+    签约项目所属活动：<input name="qyxmsshd" type="text"><br>
+    是否已报新区：<select name="sfysbxq" size="1">
+    <option value="">请选择</option>
+    <option value="是">是</option>
+    <option value="否">否</option>
+</select>
+    推进部门：<select name="unitName" size="1">
+        <option value="">请选择</option>
+        <option value="产业投促局">产业投促局</option>
+        <option value="科技创新局">科技创新局</option>
+        <option value="金融招商局">金融招商局</option>
+        <option value="中小企业招商局">中小企业招商局</option>
+        <option value="京津冀招商局">京津冀招商局</option>
+        <option value="海洋招商局">海洋招商局</option>
+        <option value="信息产业招商局">信息产业招商局</option>
+        <option value="生物医药招商局">生物医药招商局</option>
+        <option value="经发局">经发局</option>
+        <option value="重大项目服务办">重大项目服务办</option>
+        <option value="科技发展局">科技发展局</option>
+    </select><br />
+    填报人：<input name="userName" type="text">
+    联系电话：<input name="userMobilePhone" type="text"><br>
+    备注：<textarea name="bz" rows="5" cols="50"></textarea><br>
+        项目状态：<input type="radio" name="state" value="洽谈跟踪">洽谈跟踪
+        <input type="radio" name="state" value="半年有望">半年有望
+        <input type="radio" name="state" value="签约落地">签约落地<br>
+        <br>
+        <br>
+
+        <input type="submit" value="提交">
+
+
+</form>
+</div>
+
+</body>
+</html>

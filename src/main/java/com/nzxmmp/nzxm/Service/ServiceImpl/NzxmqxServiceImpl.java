@@ -1,46 +1,45 @@
 package com.nzxmmp.nzxm.Service.ServiceImpl;
 
+
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.nzxmmp.nzxm.DAO.nzxmDAO;
-import com.nzxmmp.nzxm.Service.NzxmService;
+import com.nzxmmp.nzxm.Service.NzxmqxService;
 import com.nzxmmp.nzxm.entity.FindAll;
 import com.nzxmmp.nzxm.entity.Nzxmbd;
-import com.nzxmmp.nzxm.entity.Oldnzxmbd;
 import com.nzxmmp.nzxm.entity.SearchNzxmbd;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
-@Service("NzxmServiceImpl")
-public class NzxmServiceImpl implements NzxmService {
+import java.util.Date;
 
-
+/**
+ * 内资项目增删改查业务类
+ */
+@Service("NzxmqxServiceImpl")
+public class NzxmqxServiceImpl implements NzxmqxService {
     @Autowired
-    @Qualifier("nzxmDAOImpl")
-    private nzxmDAO nzxmDAO;
+    @Qualifier("nzxmqxDAOImpl3")
+    private com.nzxmmp.nzxm.DAO.nzxmqxDAO nzxmDAO;
 
+
+    @Deprecated  //声明过时
+    @Override
+    @Transactional(readOnly = true)
+    public IPage<Nzxmbd> pageFind(Integer pageNum) {
+
+        return null;
+    }
     /**
      * 传入页数，查询所有
      * @param pageNum
      * @return
      */
     @Override
-    @Transactional(readOnly = true)
-    public IPage<Nzxmbd> pageFind(Integer pageNum) {
-
-//        IPage<Nzxmbd> nzxmbdIPage = nzxmDAO.SelectAll(pageNum);
-
-//        return nzxmbdIPage;
-     return  null;
-    }
-
-    @Override
-    public IPage<FindAll> pageFind2(Integer pageNum) {
-        return null;
+    public IPage<FindAll> pageFind2(Integer pageNum,String zh) {
+        IPage<FindAll> findAllIPage = nzxmDAO.fandAll(pageNum,zh);
+        return findAllIPage;
     }
 
     /**
@@ -50,13 +49,13 @@ public class NzxmServiceImpl implements NzxmService {
      */
     @Override
     @Transactional(readOnly = true)
-    public Nzxmbd findOne(Integer id) {
+    public Nzxmbd findOne(String id) {
         Nzxmbd nzxmbd = nzxmDAO.selectOne(id);
         return nzxmbd;
     }
 
     /**
-     * 添加信息
+     * 添加信息     Excelserviceimpl此方法被重写
      * @param nzxmbd
      * @return
      */
@@ -69,19 +68,23 @@ public class NzxmServiceImpl implements NzxmService {
 
             Nzxmbd one = nzxmDAO.selectToName(nzxmbd.getXmmc());
             if(one!=null){
-                reson="：项目名以存在";
+                reson="“"+nzxmbd.getXmmc()+"“"+"项目名以存在";
                 throw new Exception();
             }
-            Integer result = nzxmDAO.insert(nzxmbd);
-            if (!(result>0)){
+            //初始化创建时间和删除状态
+            nzxmbd.setCreattime(new Date());
+            nzxmbd.setDeletestate("0");
 
+            Integer result = nzxmDAO.insert(nzxmbd);
+
+            if (!(result>0)){
                 throw new Exception();
             }
 
 
         }catch (Exception e){
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-            return "添加失败"+reson;
+            return reson;
         }
         return "添加成功";
 
@@ -95,45 +98,48 @@ public class NzxmServiceImpl implements NzxmService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public String update(Nzxmbd nzxmbd) {
+        String reason=null;
         try{
+            nzxmbd.setUpdatetime(new Date());
+            if(nzxmbd.getXgyy()==null){
+                reason="修改原因未填写";
+                throw  new RuntimeException();
+            }
             Integer result = nzxmDAO.update(nzxmbd);
 
             if (!(result>0)){
+                reason="修改失败";
                 throw new Exception();
             }
 
         }catch (Exception e){
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-            return  "false";
+            return  reason;
         }
-        return "true";
+        return "修改成功";
 
     }
 
     /**
-     * 通过id移除入回收站
+     * 通过id移除入回收站(已修改）
      * @param id
      * @return
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean move(Integer id) {
+    public boolean move(String id,String scr,String scyy) {
 
         try {
             Nzxmbd nzxmbd = nzxmDAO.selectOne(id);
-            Oldnzxmbd oldnzxmbd = new Oldnzxmbd();
-            BeanUtils.copyProperties(nzxmbd,oldnzxmbd);
-
-//            System.out.println(nzxmbd.toString());
-
-            Integer integer = nzxmDAO.insertOld(oldnzxmbd);
-            if (!(integer>0)){
-                throw new RuntimeException();
+            nzxmbd.setDeletestate("1");
+            nzxmbd.setScr(scr);
+            nzxmbd.setScyy(scyy);
+            nzxmbd.setDeletetime(new Date());
+            Integer update = nzxmDAO.update(nzxmbd);
+            if(!(update>0)){
+                throw  new RuntimeException();
             }
-            Integer delete = nzxmDAO.delete(id);
-            if(!(delete>0)){
-                throw new RuntimeException();
-            }
+
 
         }catch (Exception e){
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();

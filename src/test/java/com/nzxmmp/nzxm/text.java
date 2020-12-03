@@ -3,20 +3,18 @@ package com.nzxmmp.nzxm;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.conditions.update.UpdateChainWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.nzxmmp.nzxm.DAO.nzxmDAO;
+import com.nzxmmp.nzxm.DAO.DAOImpl.before.nzxmDAO;
 import com.nzxmmp.nzxm.Mapper.NzxmbdMapping;
 import com.nzxmmp.nzxm.Mapper.OldnzxmbdMapper;
 import com.nzxmmp.nzxm.Mapper.SearchMapping;
+import com.nzxmmp.nzxm.entity.before.Oldnzxmbd;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.context.SpringBootTest;
 import com.nzxmmp.nzxm.entity.*;
 
-import java.sql.Wrapper;
 import java.util.List;
 
 
@@ -86,7 +84,7 @@ public class text extends  NzxmApplicationTests{
         //传入值
         Nzxmbd nzxmbd=new Nzxmbd();
         nzxmbd.setTzfmc("文峰店");
-        nzxmbd.setId(25);
+//        nzxmbd.setId(25);
 
         UpdateWrapper wrapper=new UpdateWrapper();
 
@@ -142,7 +140,7 @@ public class text extends  NzxmApplicationTests{
     public void delete(){
 
         Nzxmbd nzxmbd=new Nzxmbd();
-        nzxmbd.setId(26);
+//        nzxmbd.setId(26);
         int result = nzxmbdMapping.deleteById(nzxmbd.getId());
         System.out.println("删除行数:"+result);
 

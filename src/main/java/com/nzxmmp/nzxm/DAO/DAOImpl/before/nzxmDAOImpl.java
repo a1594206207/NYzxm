@@ -1,13 +1,13 @@
-package com.nzxmmp.nzxm.DAO.DAOImpl;
+package com.nzxmmp.nzxm.DAO.DAOImpl.before;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.nzxmmp.nzxm.DAO.nzxmDAO;
 import com.nzxmmp.nzxm.Mapper.NzxmbdMapping;
 import com.nzxmmp.nzxm.Mapper.OldnzxmbdMapper;
 import com.nzxmmp.nzxm.Mapper.SearchMapping;
 import com.nzxmmp.nzxm.entity.*;
+import com.nzxmmp.nzxm.entity.before.Oldnzxmbd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

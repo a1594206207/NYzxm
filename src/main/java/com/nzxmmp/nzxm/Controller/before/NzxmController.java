@@ -1,17 +1,14 @@
-package com.nzxmmp.nzxm.controller;
+package com.nzxmmp.nzxm.Controller.before;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 
-import com.nzxmmp.nzxm.Service.NzxmService;
+import com.nzxmmp.nzxm.Service.ServiceImpl.before.NzxmService;
 import com.nzxmmp.nzxm.entity.FindAll;
 import com.nzxmmp.nzxm.entity.Nzxmbd;
 import com.nzxmmp.nzxm.entity.SearchNzxmbd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
-
-import javax.websocket.server.PathParam;
-import java.util.List;
 
 @RestController
 @RequestMapping("/Nzxm")

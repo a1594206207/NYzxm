@@ -1,11 +1,8 @@
-package com.nzxmmp.nzxm.DAO;
+package com.nzxmmp.nzxm.DAO.DAOImpl.before;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.nzxmmp.nzxm.Mapper.OldnzxmbdMapper;
-import com.nzxmmp.nzxm.Mapper.SearchMapping;
-import com.nzxmmp.nzxm.Service.NzxmService;
 import com.nzxmmp.nzxm.entity.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.nzxmmp.nzxm.entity.before.Oldnzxmbd;
 
 import java.util.List;
 
@@ -54,7 +51,7 @@ public interface nzxmDAO {
     /**
      * 基于表单查询导出功能
      * @param outSelectReq
-     * @param outTemplate
+     * @param
      * @return
      */
     public List<Nzxmbd> outSelectAll(OutSelectReq outSelectReq);

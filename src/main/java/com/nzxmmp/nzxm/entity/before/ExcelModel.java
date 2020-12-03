@@ -1,4 +1,4 @@
-package com.nzxmmp.nzxm.entity;
+package com.nzxmmp.nzxm.entity.before;
 
 import lombok.Data;
 

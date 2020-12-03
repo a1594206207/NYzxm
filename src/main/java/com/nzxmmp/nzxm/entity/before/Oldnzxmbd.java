@@ -1,4 +1,4 @@
-package com.nzxmmp.nzxm.entity;
+package com.nzxmmp.nzxm.entity.before;
 
 
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Oldnzxmbd{
 
-  private Integer id;
+  private String id;
   private String xmmc;
   private String tzfmc;
   private String tzfszqy;

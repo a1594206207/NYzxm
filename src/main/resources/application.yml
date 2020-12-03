@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/gxqtcj?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/gxqtcj?serverTimezone=CST6CDT&characterEncoding=UTF-8
     username: root
     password: 1234
   redis:
@@ -11,6 +11,12 @@ spring:
     jedis:
       pool:
         max-active: 8
+#  mvc:
+#    view:
+#      prefix: /text/
+#      suffix: .html
+thymeleaf:
+  prefix: classpath:/templates/
 
 
 
@@ -29,11 +35,15 @@ server:
     encoding:
       enabled: true
       charset: UTF-8
-
-
 logging:
   level:
     root: warn
-    com.mybatisplus.demo.Mapper: trace
+    com.nzxmmp.nzxm.Mapper: trace
   pattern:
     console: '%p%m%n'
+
+
+mybatis-plus:
+  configuration:
+    local-cache-scope: statement
+

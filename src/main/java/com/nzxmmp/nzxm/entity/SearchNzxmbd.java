@@ -9,15 +9,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-
+/**
+ * 内资项目搜索实体类
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @TableName("nzxmbd")
 public class SearchNzxmbd {
 
-        @TableId(type= IdType.AUTO)
-        private Integer id;
+        @TableId
+        private String id;
 
         //项目名称
         @TableField(condition = SqlCondition.LIKE)
@@ -67,10 +69,9 @@ public class SearchNzxmbd {
         @TableField(condition = SqlCondition.LIKE)
         private String xmlb;
 
-
-
-
-
+        //定义账户属性，表示非nzxm表所有的字段，作用于权限查询
+        @TableField(exist = false)
+        private String zh;
 
 
 

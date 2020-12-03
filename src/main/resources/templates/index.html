@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 80%;
+            margin: 0 auto;
+        }
+        thead th{
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        tbody td{
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+
+    
+    <table  cellpadding="0px" cellspacing="0px">
+        <thead>
+            <tr>
+                <th>项目状态</th>
+                <th>项目名称</th>
+                <th>大类</th>
+                <th>中类</th>
+                <th>小类</th>
+                <th>投资方名称</th>
+                <th>项目类别</th>
+                <th>投资总额</th>
+                <th>注册资本</th>
+                <th>投资方简介</th>
+                <th>上报部门</th>
+                <th>上报人</th>
+                <th>相关操作</th>
+            </tr>
+        </thead>
+        <tbody class="addData"></tbody>
+    </table>
+
+    <script src="jquery-1.11.min.js"></script>
+    <script>
+        $(function(){
+            let sHtml = '';
+            
+            $.ajax({
+                url:'/Nzxm/Nzxmbds/1',
+                data:{
+                    page:1,
+                    size:20
+                },
+                success:function(data){
+                    // console.log(data);
+                    let records =data.records;
+                    $.each(records,function(index,item){
+                        sHtml += `<tr>
+                                    <td>${item.state}</td>
+                                    <td>${item.xmmc}</td>
+                                    <td>${item.hydl}</td>
+                                    <td>${item.hyzl}</td>
+                                    <td>${item.hyxl}</td>
+                                    <td>${item.tzfmc}</td>
+                                    <td>${item.xmlb}</td>
+                                    <td>${item.tzze}</td>
+                                    <td>${item.zczb}</td>
+                                    <td>${item.tzfjj}</td>
+                                    <td>${item.unitName}</td>
+                                    <td>${item.userName}</td>
+                                    <td>修改查看删除</td>
+                                </tr>
+                            `
+                    })
+                    $('.addData').append(sHtml);
+                }
+            })
+        })
+        
+    </script>
+</body>
+</html>
